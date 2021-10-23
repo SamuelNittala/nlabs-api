@@ -1,6 +1,7 @@
 from datetime import datetime
-from flask import current_app as app
+from flask import current_app as app, json
 from flask import make_response, jsonify, request
+from flask.globals import current_app
 from flask_jwt_extended.utils import get_jwt_identity
 from .models import Advisor, User, Booking, db
 from flask_jwt_extended import create_access_token, jwt_required, JWTManager
@@ -83,12 +84,42 @@ def get_advisors(user_id):
 @jwt_required()
 def book_advisor(userid, advisorid):
     req_data = request.get_json()
-    timing = datetime.strptime(req_data["timing"], "%d/%m/%y %H:%M:%S")
-    booking = Booking(userid,advisorid,timing)
+    timing = datetime.strptime(req_data["timing"], "%Y-%m-%d %H:%M:%S")
+
+    user = User.query.filter_by(id=userid).first()
+    current_user = get_jwt_identity()
+    if user.username != current_user:
+        return make_response("Access Denied", 403)
+    if not user:
+        return make_response("User does not exist", 403)
+
+    advisor = Advisor.query.filter_by(id=advisorid).first()
+    if not advisor:
+        return make_response("Advisor does not exits", 403)
+
+    booking = Booking(user_id = userid, advisor_id= advisorid, timing = timing)
     db.session.add(booking)
+
+    advisor.clients.append(user)
     db.session.commit()
-    all_bookings = Booking.query.all()
-    for booking in all_bookings:
-        print(booking.user_id,booking.advisor_id, booking.timing)
-    print(all_bookings)
-    return {"data": "Success"}
+
+    for user in advisor.clients:
+        print(user.username)
+    return make_response("Booking Successful", 200)
+
+@app.route("/user/<userid>/advisor/booking")
+@jwt_required()
+def get_bookings(userid):
+    user_bookings = Booking.query.filter_by(user_id = userid).all()
+    booking_data = []
+    for booking in user_bookings:
+        advisor = Advisor.query.filter_by(id = booking.advisor_id).first()
+        print(advisor.photo_url,booking.timing)
+        booking_data.append({
+            "advisor_name": advisor.username,
+            "advisor_url": advisor.photo_url,
+            "advisor_id": advisor.id,
+            "booking_time": booking.timing,
+            "booking_id": booking.id
+        })
+    return make_response({"data": booking_data},201)
