@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "5c08f211-d9da-4809-a818-3be8ec5fab17",
+		"name": "NL-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create_admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/admin",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_advisor",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNTAyNjAyMSwianRpIjoiZWM4ZDNjZDgtNzVkZC00OGU0LWJmZmEtYzBiOTFkMGMzNzE1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImFkbWluIiwibmJmIjoxNjM1MDI2MDIxLCJleHAiOjE2MzUwMjY5MjF9.bw2ASZ-T5NdWvDwlAk_LJLIoa-2kd1Sk6RpwAjdGAtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"ara\",\r\n    \"url\": \"afa/2afa/.af.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/admin/advisor",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"admin",
+						"advisor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login_as_admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"admin@admin.com\",\r\n    \"password\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/user/login",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_advisor_2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNTAyNjAyMSwianRpIjoiZWM4ZDNjZDgtNzVkZC00OGU0LWJmZmEtYzBiOTFkMGMzNzE1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImFkbWluIiwibmJmIjoxNjM1MDI2MDIxLCJleHAiOjE2MzUwMjY5MjF9.bw2ASZ-T5NdWvDwlAk_LJLIoa-2kd1Sk6RpwAjdGAtA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"afafaeara\",\r\n    \"url\":\"affa.com/adfa.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/admin/advisor",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"admin",
+						"advisor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "regiser_user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"sam@gmail.com\",\r\n    \"username\":\"samuel\",\r\n    \"password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/user/register",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login_user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"sam@gmail.com\",\r\n    \"password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/user/login",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all_advisors",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNTAyNjIyNiwianRpIjoiZGNhODc0ODUtMWI5Yi00MzFkLTkzMjgtY2UwN2I0ZmZkMGY5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6InNhbXVlbCIsIm5iZiI6MTYzNTAyNjIyNiwiZXhwIjoxNjM1MDI3MTI2fQ.St395SvJRqz8AviOW7LaXgE2fj4znY9VNfudE29GjNo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/user/2/advisor",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"2",
+						"advisor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_booking",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNTAyNjIyNiwianRpIjoiZGNhODc0ODUtMWI5Yi00MzFkLTkzMjgtY2UwN2I0ZmZkMGY5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6InNhbXVlbCIsIm5iZiI6MTYzNTAyNjIyNiwiZXhwIjoxNjM1MDI3MTI2fQ.St395SvJRqz8AviOW7LaXgE2fj4znY9VNfudE29GjNo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"timing\":\"2019-12-12 13:13:45\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/user/2/advisor/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"2",
+						"advisor",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_booking_2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNTAyNjIyNiwianRpIjoiZGNhODc0ODUtMWI5Yi00MzFkLTkzMjgtY2UwN2I0ZmZkMGY5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6InNhbXVlbCIsIm5iZiI6MTYzNTAyNjIyNiwiZXhwIjoxNjM1MDI3MTI2fQ.St395SvJRqz8AviOW7LaXgE2fj4znY9VNfudE29GjNo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"timing\":\"2011-12-11 11:13:45\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/user/2/advisor/2",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"2",
+						"advisor",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_bookings",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYzNTAyNjIyNiwianRpIjoiZGNhODc0ODUtMWI5Yi00MzFkLTkzMjgtY2UwN2I0ZmZkMGY5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6InNhbXVlbCIsIm5iZiI6MTYzNTAyNjIyNiwiZXhwIjoxNjM1MDI3MTI2fQ.St395SvJRqz8AviOW7LaXgE2fj4znY9VNfudE29GjNo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/user/2/advisor/booking",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"2",
+						"advisor",
+						"booking"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
