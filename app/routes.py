@@ -24,6 +24,9 @@ def create_advisor():
     req_data = request.get_json()
     user = User.query.filter_by(username= current_user).first()
     if (user.role == "admin"):
+        advisor = Advisor.query.filter_by(username= req_data["username"]).first()
+        if advisor:
+            return make_response("Advisor already exists",202)
         advisor = Advisor(username=req_data["username"], photo_url=req_data["url"])
         db.session.add(advisor)
         db.session.commit()
@@ -49,9 +52,7 @@ def register_user():
         )
         db.session.add(user)
         db.session.commit()
-        db.session.flush()
         access_token = create_access_token(identity=user.username)
-        print(access_token)
         return make_response(jsonify({'token': access_token, 'id': user.id}), 201)
     else:
         return make_response("User already exists", 202)
